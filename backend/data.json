@@ -1,0 +1,42 @@
+{
+    "livres": [
+        {
+            "id": 1,
+            "titre": "Le Petit Prince",
+            "auteur": "Antoine de Saint-Exupéry",
+            "genre": "Roman"
+        },
+        {
+            "id": 2,
+            "titre": "1984",
+            "auteur": "George Orwell",
+            "genre": "Science-fiction"
+        },
+        {
+            "id": 3,
+            "titre": "Antigone",
+            "auteur": "roman",
+            "genre": "fontastique "
+        }
+    ],
+    "auteurs": [
+        {
+            "id": 1,
+            "nom": "Antoine de Saint-Exupéry"
+        },
+        {
+            "id": 2,
+            "nom": "George Orwell"
+        }
+    ],
+    "genres": [
+        {
+            "id": 1,
+            "nom": "Roman"
+        },
+        {
+            "id": 2,
+            "nom": "Science-fiction"
+        }
+    ]
+}
