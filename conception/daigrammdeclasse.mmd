@@ -1,0 +1,47 @@
+classDiagram
+
+class Livre {
+    -int id
+    -string titre
+    -int auteurId
+    -int genreId
+    +getId()
+    +getTitre()
+    +getAuteurId()
+    +getGenreId()
+    +setTitre(titre)
+    +setAuteurId(auteurId)
+    +setGenreId(genreId)
+}
+
+class Auteur {
+    -int id
+    -string nom
+    +getId()
+    +getNom()
+    +setNom(nom)
+}
+
+class Genre {
+    -int id
+    -string nom
+    +getId()
+    +getNom()
+    +setNom(nom)
+}
+
+class API {
+    -string fichier
+    +getLivres()
+    +ajouterLivre(livre)
+    +getAuteurs()
+    +ajouterAuteur(auteur)
+    +getGenres()
+    +ajouterGenre(genre)
+}
+
+Auteur "1" --> "0..*" Livre : écrit
+Genre "1" --> "0..*" Livre : contient
+API --> Livre : gère
+API --> Auteur : gère
+API --> Genre : gère

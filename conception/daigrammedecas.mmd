@@ -1,0 +1,24 @@
+flowchart LR
+
+    Admin((Administrateur))
+    User((Utilisateur))
+
+    subgraph Bibliothèque
+        A[Ajouter un livre]
+        B[Afficher les livres]
+        C[Ajouter un auteur]
+        D[Afficher les auteurs]
+        E[Ajouter un genre]
+        F[Afficher les genres]
+    end
+
+    Admin --> A
+    Admin --> B
+    Admin --> C
+    Admin --> D
+    Admin --> E
+    Admin --> F
+
+    User --> B
+    User --> D
+    User --> F
