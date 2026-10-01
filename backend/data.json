@@ -17,6 +17,18 @@
             "titre": "Antigone",
             "auteur": "roman",
             "genre": "fontastique "
+        },
+        {
+            "id": 4,
+            "titre": "DAO_DAL",
+            "auteur": "ahmed",
+            "genre": "base de donne"
+        },
+        {
+            "id": 5,
+            "titre": "projet",
+            "auteur": "khadija",
+            "genre": "drole"
         }
     ],
     "auteurs": [
