@@ -1,6 +1,6 @@
 const API = "../backend/api.php";
 const byId = id => document.getElementById(id);
-const form = byId("livreForm");
+const form = byId("genreForm");
 
 const createText = (tag, className, text) => {
     const element = document.createElement(tag);
@@ -9,30 +9,29 @@ const createText = (tag, className, text) => {
     return element;
 };
 
-function afficherLivres(livres) {
-    const container = byId("livres");
-    container.innerHTML = livres.length ? "" : '<p class="text-slate-500">Aucun livre pour le moment.</p>';
-    if (!livres.length) return;
+function afficherGenres(genres) {
+    const container = byId("genres");
+    container.innerHTML = genres.length ? "" : '<p class="text-slate-500">Aucun genre pour le moment.</p>';
+    if (!genres.length) return;
 
-    livres.forEach(({ titre, auteur, genre }) => {
+    genres.forEach(({ id, nom }) => {
         const card = document.createElement("article");
         card.className = "rounded-lg border border-slate-200 bg-white p-5 shadow-sm";
-        [
-            ["h3", "mb-4 break-words text-lg font-semibold text-slate-900", titre],
-            ["p", "mb-2 break-words text-sm text-slate-600", `Auteur : ${auteur}`],
-            ["p", "break-words text-sm text-slate-600", `Genre : ${genre}`]
-        ].forEach(args => card.append(createText(...args)));
+        card.append(
+            createText("h3", "break-words text-lg font-semibold text-slate-900", nom),
+            createText("p", "mt-2 text-sm text-slate-500", `ID : ${id}`)
+        );
         container.append(card);
     });
 }
 
 function afficherDonnees() {
-    fetch(API).then(response => response.json()).then(data => afficherLivres(data.livres));
+    fetch(API).then(response => response.json()).then(data => afficherGenres(data.genres));
 }
 
 byId("ouvrirForm").addEventListener("click", () => {
     form.classList.remove("hidden");
-    byId("titre").focus();
+    byId("nom").focus();
 });
 
 byId("annulerForm").addEventListener("click", () => {
@@ -42,13 +41,10 @@ byId("annulerForm").addEventListener("click", () => {
 
 form.addEventListener("submit", async event => {
     event.preventDefault();
-    const livre = { type: "livre" };
-    ["titre", "auteur", "genre"].forEach(id => livre[id] = byId(id).value);
-
     const response = await fetch(API, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(livre)
+        body: JSON.stringify({ type: "genre", nom: byId("nom").value })
     });
     if (!(await response.json()).success) return;
     form.reset();
