@@ -9,7 +9,7 @@
 <body class="min-h-screen bg-slate-100 text-slate-800">
     <header class="bg-slate-900 px-6 py-8 text-center text-white">
         <h1 class="text-3xl font-bold">Gestion de bibliothèque</h1>
-        <p class="mt-2 text-slate-300">Gérez votre collection de livres</p>
+        <p class="mt-2 text-slate-300">Gérez votre collection des genres</p>
     </header>
     <main class="mx-auto max-w-5xl px-4 py-10 sm:px-6">
         <section>

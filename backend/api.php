@@ -1,9 +1,6 @@
 <?php
 header('Content-Type: application/json');
 $file = __DIR__ . '/data.json';
-
-
-
 class Genre
 {
     public function __construct(private int $id, private string $nom) {}
