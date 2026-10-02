@@ -1,0 +1,32 @@
+{
+    "genres": [
+        {
+            "id": 1,
+            "nom": "Roman"
+        },
+        {
+            "id": 2,
+            "nom": "Science-fiction"
+        },
+        {
+            "id": 3,
+            "nom": "drole"
+        },
+        {
+            "id": 4,
+            "nom": "chike"
+        },
+        {
+            "id": 5,
+            "nom": "mhdai"
+        },
+        {
+            "id": 6,
+            "nom": "nore"
+        },
+        {
+            "id": 7,
+            "nom": "rose teck"
+        }
+    ]
+}
