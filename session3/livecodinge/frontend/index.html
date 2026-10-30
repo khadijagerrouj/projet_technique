@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de genre</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="m-2 sm:m-4">
+
+    <div id="toast-container"></div>
+    <button id="showForm" class="bg-blue-400 text-white px-4 py-2 rounded-lg w-full sm:w-auto">Ajouter une genre</button>
+    <form id="form" hidden>
+        <div class="w-full max-w-md mx-auto sm:mx-0 px-4 sm:px-6 py-6">
+
+            <label for="nom">Nom de livre</label>
+            <input type="text" name="nom" id="nom" class="my-2 border border-gray-600 rounded-lg w-full p-2" required>
+
+            <label for="text">auteur</label>
+            <input type="text" name="auteur" id="auteur" class="my-2 border border-gray-600 rounded-lg w-full h-12 p-2" required>
+
+            <div class="flex flex-col sm:flex-row gap-2 mt-3">
+                <button type="submit" id="ajouter" class="bg-blue-400 text-white px-4 py-2 rounded-lg w-full sm:w-auto">Ajouter</button>
+                <button type="button" id="annuler" class="bg-gray-400 text-white px-4 py-2 rounded-lg w-full sm:w-auto">Annuler</button>
+            </div>
+
+        </div>
+    </form>
+
+    <div class="w-full mt-4">
+        <table class="w-full border-collapse border border-gray-500 text-sm sm:text-base">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="border border-gray-500 px-1 py-2 sm:px-3">Nom de livre</th>
+                    <th class="border border-gray-500 px-1 py-2 sm:px-3">auteur</th>
+                </tr>
+            </thead>
+            <tbody id="table_body">
+
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
