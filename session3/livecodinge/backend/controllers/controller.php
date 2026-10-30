@@ -2,7 +2,6 @@
 require '../classes/genreManager.php';
 
 class genreController{
-
     public function gettinggenre(){
         $gestion = new genreManager();
         $genre = $gestion->getgenre();
@@ -10,7 +9,6 @@ class genreController{
         header('Content-Type : application/json');
         echo json_encode($genre);
     }
-
     public function addinggenre($newgenre){
         $manage = new genreManager();
         $manage->addgenre($newgenre);

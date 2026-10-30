@@ -7,7 +7,6 @@ class genreManager{
     public function __construct(){
         $this->file = '../database/genre_data.json';
     }
-
     public function getgenre(){
         if(file_exists($this->file)){
             $json = file_get_contents($this->file);
@@ -15,7 +14,6 @@ class genreManager{
         }
         return [];
     }
-
     public function addgenre($newgenre){
         $genre = $this->getgenre();
         $genre[] = $newgenre;
