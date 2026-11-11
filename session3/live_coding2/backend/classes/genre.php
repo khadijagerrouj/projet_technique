@@ -1,19 +1,20 @@
 <?php
-class Section{
+class Genre{
     private $id;
     private $nom;
     private $auteur;
 
-    public function __construct(){
+    public function __construct($nom,$auteur){
         $this->nom = $nom;
         $this->auteur = $auteur;
+
     }
 
     public function getNom(): string{
-        $this->nom;
+        return $this->nom;
     }
     public function getauteur(): string{
-        $this->auteur;
+        return $this->auteur;
     }
 
 }

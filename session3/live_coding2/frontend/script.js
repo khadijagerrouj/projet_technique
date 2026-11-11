@@ -39,13 +39,28 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     function affichergenre(){
         fetch(API)
-        .then(response=>response.json())
+        .then(response=>{
+            if (!response.ok) throw new Error('Impossible de charger les genres.');
+            return response.json();
+        })
         .then(genre =>{
             table.innerHTML = '';
-            genre.forEach(genre => {
-                table.insertAdjacentHTML('beforeend', `<tr><td class="border border-gray-500 px-4 py-2 md:px-3">${genre.nom}</td><td class="border border-gray-500 px-4 py-2 md:px-3">${genre.auteur}</td></tr>`)
+            genre.forEach(item => {
+                const row = document.createElement('tr');
+                const nameCell = document.createElement('td');
+                const authorCell = document.createElement('td');
+                nameCell.className = 'border border-gray-500 px-4 py-2 md:px-3';
+                authorCell.className = 'border border-gray-500 px-4 py-2 md:px-3';
+                nameCell.textContent = item.nom;
+                authorCell.textContent = item.auteur;
+                row.append(nameCell, authorCell);
+                table.appendChild(row);
             });
         })
+        .catch(error => {
+            showToast(error.message, 'error');
+            console.error(error);
+        });
     }
 
     Showform.addEventListener('click', ()=>{
@@ -67,7 +82,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify(newgenre)
         })
-        .then(response=>response.json())
+        .then(async response=>{
+            const result = await response.json();
+            if (!response.ok) throw new Error(result.message || 'Erreur pendant l’enregistrement.');
+            return result;
+        })
         .then(genre=>{
             showToast("genre enregistrée avec succès !", "success");
             form.reset();

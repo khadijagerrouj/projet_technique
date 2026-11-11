@@ -1,15 +1,15 @@
 <?php
-header('Content-Type : application/json');
-require '../controllers/controller.php';
+header('Content-Type: application/json; charset=utf-8');
+require_once __DIR__ . '/../service/genreservice.php';
 
-$controller = new genreController();
+$controller = new GenreService();
 
-if($_SERVER['REQUEST_METHOD']=== 'POST'){
-    $data = file_get_contents('php://input');
-    $newgenre = json_decode($data, true);
-    $controller->addinggenre($newgenre);
+if(($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST'){
+    $result = $controller->ajouterGenre();
 }else{
-    $controller->gettinggenre();
+    $result = $controller->listerGenres();
 }
+
+echo json_encode($result, JSON_UNESCAPED_UNICODE);
 
 ?>

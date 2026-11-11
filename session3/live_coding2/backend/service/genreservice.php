@@ -1,6 +1,6 @@
 <?php
-    require_once "../dao/GenreDAO.php";
-    require_once "BaseService.php";
+    require_once __DIR__ . '/../dao/GenreDAO.php';
+    require_once __DIR__ . '/BaseService.php';
     class GenreService extends BaseService{
         private GenreDAO $genreDao;
         public function __construct(){
@@ -12,7 +12,6 @@
             $data=[];
             foreach($genres as $genre){
                 $data[]=[
-                    "id"=>$genre->getId(),
                     "nom"=>$genre->getNom(),
                     "auteur"=>$genre->getauteur(),
                 ];
@@ -23,11 +22,14 @@
         public function ajouterGenre(){
             $input=json_decode(file_get_contents("php://input"),true);
             try{
-                http_response_code(200);
-                $this->genreDao->ajouter($input["nom"],$input["auteur"]);
+                if (!is_array($input)) {
+                    throw new InvalidArgumentException("Les données envoyées sont invalides.");
+                }
+                $this->genreDao->ajouter($input["nom"] ?? "",$input["auteur"] ?? "");
+                http_response_code(201);
                 return ["success"=>true,"message"=>"Genre est bien ajoute"];
-            }catch(Error $e){
-                http_response_code(500);
+            }catch(InvalidArgumentException $e){
+                http_response_code(400);
                 return ["success"=>false,"message"=>$e->getMessage()];
             }
         }
