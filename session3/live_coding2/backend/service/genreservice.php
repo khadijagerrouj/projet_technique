@@ -5,9 +5,7 @@
         private GenreDAO $genreDao;
         public function __construct(){
             $this->genreDao= new GenreDAO();
-        }
-
-        public function listerGenres(){
+        }public function listerGenres(){
             $genres=$this->genreDao->AfficherTous();
             $data=[];
             foreach($genres as $genre){
@@ -17,9 +15,7 @@
                 ];
             }
             return $data;
-        }
-
-        public function ajouterGenre(){
+        }public function ajouterGenre(){
             $input=json_decode(file_get_contents("php://input"),true);
             try{
                 if (!is_array($input)) {
